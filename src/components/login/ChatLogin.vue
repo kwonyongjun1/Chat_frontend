@@ -1,18 +1,36 @@
 <template>
-  <div class="vue-tempalte">
-    <form>
-      <h3>Sign In</h3>
-      <div class="form-group">
-        <label>Email address</label>
-        <input type="email" class="form-control form-control-lg" />
+<!--  <div>-->
+<!--    <h2>로그인폼</h2>-->
+<!--    <form action="login.jsp" method="post">-->
+<!--      <div class="mb-3">-->
+<!--        <label class="form-label" for="id">아이디</label>-->
+<!--        <input class="form-control" type="text" name="id" id="id" />-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label class="form-label" for="pwd">비밀번호</label>-->
+<!--        <input class="form-control" type="password" name="pwd" id="pwd" />-->
+<!--      </div>-->
+<!--      <router-link to="/">-->
+<!--        <button class="btn btn-outline-primary btn-sm">로그인</button>-->
+<!--      </router-link>-->
+<!--    </form>-->
+<!--  </div>-->
+  <body>
+  <div class="container">
+    <h2>로그인폼</h2>
+    <form action="login.jsp" method="post">
+      <div class="mb-3">
+        <label class="form-label" for="id">아이디</label>
+        <input class="form-control" type="text" name="id" id="id" />
       </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" class="form-control form-control-lg" />
+      <div class="mb-3">
+        <label class="form-label" for="pwd">비밀번호</label>
+        <input class="form-control" type="password" name="pwd" id="pwd" />
       </div>
-      <button type="submit" class="btn btn-dark btn-lg btn-block">Sign In</button>
+      <button class="btn btn-outline-primary btn-sm" type="submit">로그인</button>
     </form>
   </div>
+  </body>
 </template>
 
 <script>
