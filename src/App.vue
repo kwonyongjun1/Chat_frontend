@@ -1,12 +1,13 @@
 <template>
-  <router-view/>
+  <ChatMain></ChatMain>
 </template>
 
 <script>
+import ChatMain from './components/ChatMain.vue'
   export default {
     name : 'App',
     components:{
-
+      ChatMain
     },
     data(){
       return {

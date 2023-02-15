@@ -1,11 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import ChatMain from '../components/ChatMain'
+import ChatHome from '../components/chat/ChatHome'
 import ChatLogin from '../components/login/ChatLogin'
 const routes = [
   {
     path: '/',
-    name : 'ChatMain',
-    component: ChatMain
+    name : 'ChatHome',
+    component: ChatHome,
+    beforeEnter(to,from,next){
+      if(sessionStorage.getItem('userId') == null){
+        next({name : 'ChatLogin'})
+      }else{
+        next();
+      }
+    }
   },
   {
     path: '/login',

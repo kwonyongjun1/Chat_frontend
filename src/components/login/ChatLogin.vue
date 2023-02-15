@@ -1,41 +1,39 @@
 <template>
-<!--  <div>-->
-<!--    <h2>로그인폼</h2>-->
-<!--    <form action="login.jsp" method="post">-->
-<!--      <div class="mb-3">-->
-<!--        <label class="form-label" for="id">아이디</label>-->
-<!--        <input class="form-control" type="text" name="id" id="id" />-->
-<!--      </div>-->
-<!--      <div class="mb-3">-->
-<!--        <label class="form-label" for="pwd">비밀번호</label>-->
-<!--        <input class="form-control" type="password" name="pwd" id="pwd" />-->
-<!--      </div>-->
-<!--      <router-link to="/">-->
-<!--        <button class="btn btn-outline-primary btn-sm">로그인</button>-->
-<!--      </router-link>-->
-<!--    </form>-->
-<!--  </div>-->
-  <body>
-  <div class="container">
-    <h2>로그인폼</h2>
-    <form action="login.jsp" method="post">
-      <div class="mb-3">
-        <label class="form-label" for="id">아이디</label>
-        <input class="form-control" type="text" name="id" id="id" />
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="pwd">비밀번호</label>
-        <input class="form-control" type="password" name="pwd" id="pwd" />
-      </div>
-      <button class="btn btn-outline-primary btn-sm" type="submit">로그인</button>
-    </form>
+
+  <div class = "w-50">
+    <div>
+        <div class="form-floating mb-3 ">
+            <input v-model = "userId" type="text" class="form-control" id="floatingInput">
+            <label for="floatingInput">id</label>
+        </div>
+        <!-- <div class="form-floating mb-3">
+            <input v-model = "userPassword" type="input" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">password</label>
+        </div> -->
+        <div class="form-floating mb-3">
+            <!-- <router-link to="/"> -->
+                <button type="button" class="btn btn-primary btn-lg" @click="login">Login</button>
+            <!-- </router-link> -->
+        </div>
+    </div>
   </div>
-  </body>
 </template>
 
 <script>
 export default {
-  name: "ChatLogin"
+  name: "ChatLogin",
+  data(){
+    return{
+      userId : '',
+      // userPassword : ''
+    }
+  },
+  methods : {
+    login() {
+      sessionStorage.setItem('userId', this.userId); // sessionStorage id 저장
+      location.href = '/'
+    }
+  }
 }
 </script>
 
