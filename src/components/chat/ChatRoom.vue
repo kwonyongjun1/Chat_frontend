@@ -69,17 +69,17 @@ export default {
     return {
       sessionId : sessionStorage.getItem("userId"),
       anotherUserId : '',
-      message : '',
-
+      chatData : [],
     }
   },
   methods : {
     connect() {
+      let chatData = this.chatData
       // this.websocket = new WebSocket('ws://'+ location.host +'/chat');
       this.websocket = new WebSocket('ws://localhost:8081/api/chat');
 
       this.websocket.onopen = function (){
-        alert(sessionStorage.getItem("id"));
+        alert(this.sessionId);
       }
 
       this.websocket.onerror = function (error) {
@@ -93,8 +93,16 @@ export default {
           if(jsonData.type == "getId"){
             console.log(jsonData.sessionId);
           }else if(jsonData.type == "message"){
-            alert(jsonData.msg);
-            console.log(jsonData)
+            chatData.push(
+                {
+                  id : jsonData.sessionId,
+                  message : jsonData.msg
+                }
+            )
+            // message : {
+            //   id : jsonData.sessionId,
+            //   message : jsonData.msg
+            // }
           }
         }
       }
