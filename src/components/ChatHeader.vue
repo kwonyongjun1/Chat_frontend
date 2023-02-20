@@ -1,12 +1,13 @@
 <template>
-  <div>
-    <b-nav pills>
-      <b-nav-item active>Active</b-nav-item>
-      <b-nav-item>Link</b-nav-item>
-      <b-nav-item>Another Link</b-nav-item>
-      <b-nav-item disabled>Disabled</b-nav-item>
-    </b-nav>
-  </div>
+  <nav class="navbar navbar-dark bg-primary w-75 mx-auto bg-info">
+    <div class="container-fluid">
+      <a class="navbar-brand"></a>
+      <a class="navbar-brand">채팅</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
 </template>
 
 <script>

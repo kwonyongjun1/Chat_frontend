@@ -1,29 +1,48 @@
 <template>
-    <div>
-      <div id="container" class="container">
-        <h1>{{userId}}님 안녕하세요</h1>
-        <h1>채팅</h1>
-        <div id="chating" class="chating">
-        </div>
-          <th><button v-on:click="connect">연결</button></th>
-        <div id="yourMsg">
-          <table class="inputTable">
-            <tr>
-              <th>메시지</th>
-              <th><input v-model = "message"></th>
-              <th><button v-on:click="send" id="sendBtn">보내기</button></th>
-            </tr>
-          </table>
-        </div>
+  <div  class = "w-75 mx-auto ">
+    <div class = "mx-auto">
+      <div class = "w-100" style = "float : left">
+        <seciton  style="background-color: #eee;">
+          <ChatList ></ChatList>
+        </seciton>
       </div>
+<!--      <div class = "py-5">-->
+<!--          <ChatRoom></ChatRoom>-->
+<!--      </div>-->
+
     </div>
+  </div>
+
+
+
+<!--    <div>-->
+<!--      <div id="container" class="container">-->
+<!--        <h1>{{userId}}님 안녕하세요</h1>-->
+<!--        <h1>채팅</h1>-->
+<!--        <div id="chating" class="chating">-->
+<!--        </div>-->
+<!--          <th><button v-on:click="connect">연결</button></th>-->
+<!--        <div id="yourMsg">-->
+<!--          <table class="inputTable">-->
+<!--            <tr>-->
+<!--              <th>메시지</th>-->
+<!--              <th><input v-model = "message"></th>-->
+<!--              <th><button v-on:click="send" id="sendBtn">보내기</button></th>-->
+<!--            </tr>-->
+<!--          </table>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 </template>
 
 <script>
+import ChatList from './ChatList.vue'
+// import ChatRoom from './ChatRoom.vue'
 export default{
     name : 'ChatHome',
     components :{
-
+      ChatList,
+      // ChatRoom
     },
     data() {
       return{
@@ -32,7 +51,7 @@ export default{
       }
     },
     methods : {
-        connect() {
+      connect() {
       // this.websocket = new WebSocket('ws://'+ location.host +'/chat');
       this.websocket = new WebSocket('ws://localhost:8081/api/chat');
 
