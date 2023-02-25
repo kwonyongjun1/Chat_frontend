@@ -3,7 +3,6 @@
     <div class="row">
       <div class="">
         <div class="card">
-
           <div class="card-body">
             <!-- start -->
             <ul class="list-unstyled mb-0">
@@ -11,7 +10,7 @@
                 <div  class="d-flex justify-content-between" style = "cursor : pointer">
                   <div class="d-flex flex-row">
                     <div class="pt-1">
-                      <p class="fw-bold mb-0">방 이름</p>
+                      <p class="fw-bold mb-0">채팅방1</p>
                     </div>
                   </div>
                   <div class="">

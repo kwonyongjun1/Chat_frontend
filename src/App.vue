@@ -1,20 +1,21 @@
 <template>
-  <ChatMain></ChatMain>
+  <header>
+    <MainHeader></MainHeader>
+  </header>
+  <body>
+  <router-view/>
+  </body>
 </template>
 
 <script>
-import ChatMain from './components/ChatMain.vue'
-  export default {
-    name : 'App',
-    components:{
-      ChatMain
-    },
-    data(){
-      return {
-
-      }
+import MainHeader from "@/components/MainHeader";
+export default {
+  components: {MainHeader},
+  data()  {
+    return {
     }
   }
+}
 </script>
 <style>
 #app {

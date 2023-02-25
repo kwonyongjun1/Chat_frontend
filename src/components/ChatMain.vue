@@ -1,33 +1,28 @@
 <template>
-  <header>
-    <ChatHeader></ChatHeader>
-  </header>
-    <body>
-      <router-view/>
-   </body>
-  <footer>
+  <div  class = "w-75 mx-auto ">
+    <div class = "mx-auto">
+      <div class = "w-100" style = "float : left">
+        <seciton  style="background-color: whitesmoke;">
+          <ChatRoomList ></ChatRoomList>
+        </seciton>
+      </div>
+    </div>
+  </div>
 
-  </footer>
-  
 </template>
 
 <script>
-import ChatHeader from "@/components/ChatHeader";
-export default {
-  name: 'ChatMain',
-  components: {ChatHeader},
-  data()  {
-    return {
-    }
-  },
-  methods : {
+import ChatRoomList from './chat/ChatRoomList.vue';
 
+export default{
+  components :{
+    ChatRoomList,
+  },
+  data() {
+    return{
+      userId : sessionStorage.getItem('userId'), //
+      message : ''
+    }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-
-</style>
