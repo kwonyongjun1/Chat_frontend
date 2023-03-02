@@ -19,63 +19,64 @@
           </div>
         </div>
       </section>
+      <button @click="test">test</button>
     </div>
   </div>
 </template>
 
 <script>
+import Stomp from 'webstomp-client'
+import SockJS from 'sockjs-client'
+import axios from "axios";
 export default {
   data() {
     return {
       sessionId : sessionStorage.getItem("userId"),
       anotherUserId : '',
       chatData : [],
-      message : ''
+      message : '',
+      testList : [],
+      roomId : 1
     }
   },
   methods : {
     connect() {
-      let chatData = this.chatData
-      this.websocket = new WebSocket('ws://localhost:8081/api/chat');
+      let sockJs = new SockJS("http://localhost:8081/api/chat");
+      this.stompClient = Stomp.over(sockJs);
 
-      /**
-       * 연결 시 사용
-       */
-      this.websocket.onopen = function (){
-        console.log("connect");
-      }
+      this.stompClient.connect({},
+          ()=> {
+          this.connected = true;
+          console.log("연결 성공.")
 
-      this.websocket.onerror = function (error) {
-        console.log('error : ' + error);
-      }
-
-      this.websocket.onmessage = function (event){
-        let msg = event.data;
-        if(msg != null){
-          let jsonData = JSON.parse(msg);
-          if(jsonData.type == "message"){
-            chatData.push(
-                {
-                  id : jsonData.sessionId,
-                  message : jsonData.msg
-                }
-            )
+          // 구독한 메세지 받는 경우
+          this.stompClient.subscribe("/sub/room/" + this.roomId, res => {
+            this.testList.push(JSON.parse(res.body));
+            alert(JSON.parse(res.body));
+          })
+        },
+          () => {
+            this.connected = false;
+            console.log("연결 실패.")
           }
-        }
-
-      }
+      )
     },
-    send() {
-      let option ={
-        event : "open",
-        type: "message",
-        sessionId : this.sessionId,
-        userName : 'userName',
-        msg : this.message,
-        roomNumber : 1
+    send(){
+      let msg = {
+        userName : this.sessionId,
+        messageContent : this.message,
+        ChatRoomId : 1
       }
-      this.websocket.send(JSON.stringify(option));
-      this.message = '';
+      this.stompClient.send("/pub/chat/message", JSON.stringify(msg),{});
+    },
+    test(){
+      axios.get('http://localhost:8081/chat/room')
+        .then((response)=>{
+          console.log(response);
+        })
+        .catch((error)=>{
+          console.log(error);
+        })
     }
   }
 }

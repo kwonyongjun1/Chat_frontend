@@ -20,7 +20,7 @@ export default{
   },
   data() {
     return{
-      userId : sessionStorage.getItem('userId'), //
+      userId : sessionStorage.getItem('userId'),
       message : ''
     }
   }
