@@ -70,7 +70,7 @@ export default {
       this.stompClient.send("/pub/chat/message", JSON.stringify(msg),{});
     },
     test(){
-      axios.get('http://localhost:8081/chat/room')
+      axios.get('http://localhost:8081/message/test')
         .then((response)=>{
           console.log(response);
         })
