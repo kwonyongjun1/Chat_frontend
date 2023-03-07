@@ -70,7 +70,18 @@ export default {
       this.stompClient.send("/pub/chat/message", JSON.stringify(msg),{});
     },
     test(){
-      axios.get('http://localhost:8081/message/test')
+      const url = 'http://localhost:8081/user/register';
+      const data = {
+        'userId' : 'testUser'
+      };
+      const headers = {"Content-Type": 'application/json; charset=utf-8'};
+
+      axios({
+        method : "post",
+        url : url,
+        data : JSON.stringify(data),
+        headers : headers
+      })
         .then((response)=>{
           console.log(response);
         })

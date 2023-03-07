@@ -49,7 +49,7 @@ export default{
   },
   methods : {
     showModal(){
-      this.$refs.ChatRoom.connect();
+       this.$refs.ChatRoom.connect();
     }
   }
 
