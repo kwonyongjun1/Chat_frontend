@@ -12,6 +12,7 @@
 <!--      </div>-->
       <div class="form-floating mb-3">
         <router-link to="/">
+          <button type="button" class="btn btn-primary btn-lg" @click="sign">Sign</button>
           <button type="button" class="btn btn-primary btn-lg" @click="login">Login</button>
         </router-link>
       </div>
@@ -20,6 +21,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "ChatLogin",
   data(){
@@ -30,7 +33,36 @@ export default {
   methods : {
     login() {
       sessionStorage.setItem('userId', this.userId); // sessionStorage id 저장
+      this.getLoginInfo()
+        .then()
+    },
+    sign(){
+
+    },
+
+    async getLoginInfo() {
+
+      const url = 'http://localhost:8081/user/login';
+      const data = {
+        'userId' : this.userId
+      };
+      const headers = {"Content-Type": 'application/json; charset=utf-8'};
+
+      return axios({
+        method : "post",
+        url : url,
+        data : JSON.stringify(data),
+        headers : headers
+      })
+          .then((response)=>{
+            console.log(response);
+          })
+          .catch((error)=>{
+            console.log(error);
+          });
+
     }
+
   }
 }
 </script>
